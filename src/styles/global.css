@@ -3,6 +3,9 @@
   --text-main: #36393b;
   --text-secondary: #6b6f72;
   --primary-color: #2563eb;
+  --color-primary: #2563eb;
+  --color-primary-light: #e0e7ff;
+  --text-primary: #36393b;
   --font-family-serif: Merriweather, serif;
   --font-family-sans: 'Fira Sans', sans-serif;
 }
@@ -12,6 +15,9 @@
   --text-main: #fff;
   --text-secondary: #ccc;
   --primary-color: #2563eb;
+  --color-primary: #3b82f6;
+  --color-primary-light: #1e293b;
+  --text-primary: #fff;
 }
 
 html {

@@ -8,52 +8,206 @@ const permalink = `${Astro.site.href}about`;
 
 <BaseLayout title={title} description={description} permalink={permalink} current="about">
   <div class="container">
-    <h1>About Bravix</h1>
-    <figure class="about-image">
-      <img src="/assets/about-illustration.webp" alt="AI and automation illustration" width="330">
-      <figcaption>
-        Illustration by
-        <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target="_blank" rel="noopener">Icons 8</a>
-        from
-        <a href="https://icons8.com/illustrations" target="_blank" rel="noopener">Ouch!</a>
-      </figcaption>
-    </figure>
-    <p><strong>Bravix</strong> es tu partner tecnológico especializado en <strong>automatización con IA</strong> y desarrollo de software personalizado para PyMEs mexicanas.</p>
+    <div class="about-hero">
+      <div class="about-logo">
+        <img src="/assets/logo.webp" alt="Bravix" width="100" height="67" />
+      </div>
+      <h1>Sobre Bravix</h1>
+      <p class="about-subtitle">
+        <strong>Somos tu partner tecnológico especializado en IA y automatización para PyMEs.</strong>
+      </p>
+    </div>
 
-    <h2>Nuestra Misión</h2>
-    <p>Democratizar el acceso a tecnología de vanguardia, ayudando a pequeñas y medianas empresas a competir con las grandes corporaciones mediante la implementación estratégica de inteligencia artificial y automatización.</p>
+    <div class="about-content">
+      <div class="about-section">
+        <h2>🚀 Nuestra Misión</h2>
+        <p>Ayudar a empresas mexicanas a competir con tecnología de vanguardia, sin complicaciones técnicas.</p>
+      </div>
 
-    <h2>¿Qué Hacemos?</h2>
-    <ul>
-      <li><strong>Agentes de IA:</strong> Automatizamos procesos repetitivos con inteligencia artificial</li>
-      <li><strong>Software Personalizado:</strong> Desarrollamos soluciones específicas para tu negocio</li>
-      <li><strong>Automatización de Procesos:</strong> Optimizamos operaciones para mejorar eficiencia</li>
-      <li><strong>Integración de Sistemas:</strong> Conectamos tus herramientas existentes</li>
-    </ul>
+      <div class="about-section">
+        <h2>🛠️ Lo que hacemos</h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <strong>Agentes de IA</strong> que automatizan tareas repetitivas
+          </div>
+          <div class="service-item">
+            <strong>Software personalizado</strong> para procesos específicos
+          </div>
+          <div class="service-item">
+            <strong>Consultoría estratégica</strong> en transformación digital
+          </div>
+        </div>
+      </div>
 
-    <h2>¿Por Qué Elegir Bravix?</h2>
-    <p>Entendemos el panorama empresarial mexicano. Nuestro enfoque no es solo tecnológico, sino estratégico: analizamos tu negocio para implementar soluciones que generen ROI real y medible.</p>
+      <div class="about-section">
+        <h2>🎯 ¿Por qué este blog?</h2>
+        <p>Creemos que la educación es clave. Aquí compartimos conocimiento práctico para que puedas entender y aprovechar las oportunidades que ofrece la IA.</p>
+      </div>
 
-    <p>¿Listo para transformar tu empresa? <a href="https://bravix.com.mx" target="_blank" rel="noopener">Contáctanos</a> y descubre cómo la IA puede revolucionar tu negocio.</p>
+      <div class="cta-section">
+        <h3>¿Listo para transformar tu negocio?</h3>
+        <a href="https://bravix.com.mx" target="_blank" rel="noopener" class="cta-button">
+          👉 Visita nuestro sitio principal
+        </a>
+      </div>
+    </div>
   </div>
 </BaseLayout>
 
 <style>
-  .about-image {
-    float: right;
-    margin: -3em -7em 2em 2em;
-    max-width: 300px;
+  /* About Hero Section */
+  .about-hero {
+    text-align: center;
+    margin-bottom: 3em;
+    padding: 2em;
+    background: linear-gradient(135deg, var(--primary-color-light, #f8f9ff) 0%, var(--background) 100%);
+    border-radius: 12px;
+    border: 1px solid var(--border-color, #e2e8f0);
   }
 
-  .about-image img {
-    border-radius: 8px;
+  .about-logo {
     margin-bottom: 1.5em;
   }
 
-  @media (max-width: 1020px) {
-    .about-image {
-      float: none;
-      margin: 0 auto 2em;
+  .about-logo img {
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+  }
+
+  .about-logo img:hover {
+    transform: scale(1.05);
+  }
+
+  .about-hero h1 {
+    font-size: 2.2em;
+    margin-bottom: 0.8em;
+    color: var(--primary-color, #2563eb);
+    font-weight: 800;
+  }
+
+  .about-subtitle {
+    font-size: 1.2em;
+    color: var(--text-primary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* About Content */
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-section {
+    margin-bottom: 2.5em;
+    padding: 1.5em;
+    background: var(--background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #e2e8f0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .about-section h2 {
+    color: var(--text-primary);
+    margin-bottom: 1em;
+    font-size: 1.3em;
+  }
+
+  .about-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.1em;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    margin-top: 1em;
+  }
+
+  .service-item {
+    padding: 1em;
+    background: var(--primary-color-light, #f8f9ff);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    border: 1px solid var(--border-color, #e2e8f0);
+  }
+
+  .service-item strong {
+    color: var(--primary-color, #2563eb);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    padding: 2em;
+    background: var(--primary-color-light, #f8f9ff);
+    border-radius: 12px;
+    border: 2px solid var(--primary-color, #2563eb);
+    margin-top: 2em;
+  }
+
+  .cta-section h3 {
+    margin-bottom: 1.5em;
+    color: var(--text-primary);
+    font-size: 1.3em;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--primary-color, #2563eb);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+  }
+
+  .cta-button:hover {
+    background: var(--primary-color-dark, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .about-hero {
+      padding: 1.5em 1em;
+      margin-bottom: 2em;
+    }
+
+    .about-hero h1 {
+      font-size: 1.8em;
+    }
+
+    .about-subtitle {
+      font-size: 1.1em;
+    }
+
+    .about-section {
+      padding: 1.2em;
+      margin-bottom: 1.5em;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 0.8em;
+    }
+
+    .cta-section {
+      padding: 1.5em 1em;
+    }
+
+    .cta-button {
+      padding: 10px 20px;
+      font-size: 1em;
     }
   }
 </style>

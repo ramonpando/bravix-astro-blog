@@ -1,65 +1,182 @@
-# [Astro](https://astro.build) Blog Template
+# Bravix Blog
 
-[![Screenshot](screenshot.png)](https://astro-blog-template.netlify.app/)
+Blog corporativo de Bravix especializado en IA y automatización para PyMEs mexicanas.
 
-## 👉 Check out the ✨ [Live Demo](https://astro-blog-template.netlify.app/) ✨
+## 🏗️ Arquitectura del Sistema
 
-## 👩‍🚀 Getting Started
+### Proyectos Separados
+- **Landing Page**: `/root/Bravix_Landing` - Sitio principal bravix.com.mx
+- **Blog**: `/root/bravix-blog` - Blog separado que se integra en `/blog/`
 
-### Locally
+### Ventajas de la Separación
+- ✅ **Aislamiento**: Si uno falla, el otro sigue funcionando
+- ✅ **Mantenimiento**: Cambios independientes sin afectar el otro
+- ✅ **Deploy**: Actualizaciones separadas y más seguras
+- ✅ **Desarrollo**: Equipos pueden trabajar independientemente
+
+## 🚀 Deployment
+
+### Proceso Automático
+1. **Blog Repository**: [https://github.com/ramonpando/bravix-astro-blog.git](https://github.com/ramonpando/bravix-astro-blog.git)
+2. **Dokploy**: Detecta cambios automáticamente
+3. **Build**: Astro build + integración con landing
+4. **Serve**: Se sirve en `bravix.com.mx/blog/`
+
+### Script de Integración
+```bash
+# En /root/Bravix_Landing/build-with-blog.sh
+./build-with-blog.sh  # Construye ambos proyectos e integra
+```
+
+## 📁 Estructura del Blog
 
 ```
-npm init astro -- --template Charca/astro-blog-template
-```
-
-### On StackBlitz
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/charca/astro-blog-template)
-
-## ✨ Features:
-
-- ✅ Astro 4.0
-- ✅ Dark Mode
-- ✅ Full Markdown support
-- ✅ SEO-friendly setup with canonical URLs and OpenGraph data
-- ✅ RSS 2.0 generation
-- ✅ Sitemap.xml generation
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   ├── robots.txt
-│   └── favicon.ico
+/root/bravix-blog/
 ├── src/
 │   ├── components/
-│   │   └── Tour.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   │   ├── Logo.astro           # Logo Bravix (150x100px)
+│   │   ├── Nav.astro            # Solo theme toggle
+│   │   ├── Header.astro         # Header principal
+│   │   └── Footer.astro         # Footer corporativo
+│   ├── content/posts/           # Artículos en Markdown
+│   │   └── inteligencia-artificial-pymes-2025.md
+│   ├── layouts/
+│   │   └── BaseLayout.astro     # Layout base
+│   ├── pages/
+│   │   ├── index.astro          # Home del blog
+│   │   ├── about.astro          # Sobre Bravix
+│   │   └── blog/
+│   │       └── [slug].astro     # Template artículos
+│   └── styles/
+│       └── global.css           # Estilos globales
+├── public/assets/
+│   └── logo.png                 # Logo Bravix (16,821 bytes)
+├── scripts/
+│   └── post-build.sh           # Symlinks para assets
+└── astro.config.mjs            # base: '/blog'
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## ✍️ Crear Nuevos Artículos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### 1. Crear archivo Markdown
+```bash
+# En src/content/posts/
+touch nuevo-articulo-2025.md
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+### 2. Frontmatter requerido
+```markdown
+---
+title: "Título del Artículo"
+slug: "url-del-articulo"
+description: "Descripción breve para SEO"
+publishDate: "25 Dec 2024"
+---
 
-## 🧞 Commands
+# Contenido del artículo aquí...
+```
 
-All commands are run from the root of the project, from a terminal:
+### 3. Build y Deploy
+```bash
+npm run build      # Construir blog
+git add .
+git commit -m "Add: nuevo artículo"
+git push origin master  # Deploy automático
+```
 
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3030`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
+## 🎨 Personalización
 
-## 👀 Want to learn more?
+### Logo y Branding
+- **Logo**: `public/assets/logo.png` (Bravix infinito púrpura)
+- **Tamaños**: Header (150x100), Home (240x160), About (200x134)
+- **Links**: Logo → bravix.com.mx (sitio principal)
 
-Feel free to check [Astro's documentation](https://github.com/withastro/astro) or jump into Astro's [Discord server](https://astro.build/chat).
-# Blog updated Thu Sep 25 11:46:37 UTC 2025
+### Navegación
+- **Simplificada**: Solo theme toggle (modo oscuro/claro)
+- **Sin enlaces**: Eliminados home/about/blog (404s)
+- **Foco**: Logo para navegación principal
+
+### Estilos
+- **CSS**: `src/styles/global.css`
+- **Tema**: Soporte dark/light mode
+- **Responsive**: Mobile-first design
+- **Branding**: Colores corporativos Bravix
+
+## 🛠️ Comandos Útiles
+
+### Desarrollo
+```bash
+npm run dev         # Servidor desarrollo
+npm run build       # Build producción
+npm run preview     # Preview build
+```
+
+### Deploy Completo
+```bash
+cd /root/Bravix_Landing
+./build-with-blog.sh  # Build + integración
+```
+
+### Git Workflow
+```bash
+git add .
+git commit -m "feat: descripción del cambio
+
+🚀 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+git push origin master
+```
+
+## 🔧 Configuración Técnica
+
+### Astro Config
+- **Base**: `/blog/` (importante para rutas)
+- **Output**: Static
+- **Content**: Colecciones de posts
+
+### Asset Management
+- **Symlinks**: Automáticos via `post-build.sh`
+- **Paths**: `/blog/assets/` y `/blog/_astro/`
+- **Images**: Optimización automática
+
+### SEO
+- **Meta tags**: Configurados por artículo
+- **Open Graph**: Imágenes y descripciones
+- **Sitemap**: Generación automática
+
+## 📝 Mantenimiento
+
+### Assets Eliminados
+- ❌ `profile-pic.webp` (autor template)
+- ❌ `logo.webp` (planeta template)
+- ❌ Componente `Bio.astro`
+
+### URLs Válidas
+- ✅ `/blog/` - Home del blog
+- ✅ `/blog/inteligencia-artificial-pymes-2025` - Artículo
+- ✅ `/blog/assets/logo.png` - Logo
+
+### Debugging
+```bash
+# Verificar build
+ls -la dist/blog/assets/logo*
+
+# Verificar symlinks
+ls -la dist/blog/_astro
+ls -la dist/blog/assets
+
+# Verificar contenido
+grep -r "logo" dist/blog/index.html
+```
+
+## 🎯 Próximos Pasos
+
+1. **Nuevo artículo**: Seguir formato established
+2. **SEO**: Optimizar meta descriptions
+3. **Performance**: Revisar loading times
+4. **Analytics**: Implementar tracking
+
+---
+
+**Nota**: Este sistema está optimizado para estabilidad y separación de responsabilidades. Mantener esta arquitectura para escalabilidad futura.

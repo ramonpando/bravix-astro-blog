@@ -16,6 +16,7 @@
     "rehype-external-links": "^3.0.0",
     "remark-gfm": "^4.0.0",
     "remark-smartypants": "^2.0.0",
-    "serve": "^14.2.3"
+    "serve": "^14.2.3",
+    "date-fns": "^2.29.3"
   }
 }

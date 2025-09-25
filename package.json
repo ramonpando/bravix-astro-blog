@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "npx serve dist -l 4321 -s",
+    "start": "npx serve dist -l 4321",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

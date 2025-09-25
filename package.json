@@ -1,9 +1,9 @@
 {
-  "name": "bravix-blog-new",
+  "name": "bravix-blog",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start": "npx serve dist -l 4321 -s",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -15,6 +15,7 @@
     "reading-time": "^1.5.0",
     "rehype-external-links": "^3.0.0",
     "remark-gfm": "^4.0.0",
-    "remark-smartypants": "^2.0.0"
+    "remark-smartypants": "^2.0.0",
+    "serve": "^14.2.3"
   }
 }

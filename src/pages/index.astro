@@ -16,7 +16,7 @@ const posts = (await getCollection('posts')).sort(
   <div class="container">
     <div class="hero-section">
       <div class="hero-logo">
-        <img src="/blog/assets/logo.webp" alt="Bravix" width="120" height="80" />
+        <img src="/assets/logo.webp" alt="Bravix" width="120" height="80" />
       </div>
       <h1>Blog Bravix</h1>
       <p class="hero-subtitle">
@@ -44,7 +44,7 @@ const posts = (await getCollection('posts')).sort(
       <div>
         <div class="post-item">
           <h2>
-            <a href={`/blog/blog/${post.data.slug}`}>{post.data.title}</a>
+            <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>
           </h2>
           <p>{post.data.description}</p>
           <div class="post-item-footer">

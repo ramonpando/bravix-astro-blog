@@ -8,7 +8,7 @@ import rehypeExternalLinks from 'rehype-external-links'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://bravix.com.mx',
-  base: '/blog', // Restored for proper asset paths in integration
+  // base: '/blog', // Commented out for standalone deployment
   integrations: [mdx(), svelte()],
   markdown: {
     shikiConfig: {

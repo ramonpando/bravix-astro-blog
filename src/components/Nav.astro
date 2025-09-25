@@ -8,7 +8,7 @@ const { current = '' } = Astro.props;
     align-items: center;
     display: flex;
     flex: 1;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .nav-links {
@@ -62,8 +62,8 @@ const { current = '' } = Astro.props;
 <nav>
   <div class="nav-links">
     <a href="/blog/" class="articles-link">📰 Ver Más Artículos</a>
-  </div>
-  <div class="theme-toggle-container">
-    <ThemeToggleButton client:load />
+    <div class="theme-toggle-container">
+      <ThemeToggleButton client:load />
+    </div>
   </div>
 </nav>
